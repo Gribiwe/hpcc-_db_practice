@@ -22,8 +22,14 @@ public class TransportService {
       return transportRepository.findTransportEntitiesByMaxCapacityIsLessThanEqualAndMaxWeightIsLessThanEqual(capacity, weight);
    }
 
-   public void saveTransport(TransportEntity transportEntity) {
-      transportRepository.save(transportEntity);
+   public TransportEntity saveTransport(String name, Double price, Double maxCapacity, Double maxWeight) {
+      TransportEntity transportEntity = new TransportEntity();
+      transportEntity.setId(UUID.randomUUID());
+      transportEntity.setName(name);
+      transportEntity.setPrice(price);
+      transportEntity.setMaxCapacity(maxCapacity);
+      transportEntity.setMaxWeight(maxWeight);
+      return transportRepository.save(transportEntity);
    }
 
    public TransportEntity getTransport(UUID uuid) {

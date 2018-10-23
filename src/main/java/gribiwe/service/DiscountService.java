@@ -5,6 +5,7 @@ import gribiwe.repository.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,7 +24,15 @@ public class DiscountService {
       discountEntity.setAmount(amount);
       discountEntity.setUpperThreshold(upperThreshold);
       discountEntity.setLowerThreshold(lowerThreshold);
-      discountRepository.save(discountEntity);
-      return discountEntity;
+      return  discountRepository.save(discountEntity);
+   }
+
+   public DiscountEntity getDiscount(Double distance) {
+      for (DiscountEntity discountEntity : discountRepository.findAll()) {
+         if (discountEntity.getLowerThreshold() <= distance && discountEntity.getUpperThreshold() >= distance) {
+            return discountEntity;
+         }
+      }
+      return null;
    }
 }

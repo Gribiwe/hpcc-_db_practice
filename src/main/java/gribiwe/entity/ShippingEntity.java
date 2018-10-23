@@ -16,15 +16,15 @@ public class ShippingEntity {
    @Column(name = "shipping", nullable = false, updatable = false)
    private UUID id;
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "transport", nullable = false)
    private TransportEntity transport;
 
-   @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "discount", nullable = false)
+   @ManyToOne(fetch = FetchType.EAGER)
+   @JoinColumn(name = "discount")
    private DiscountEntity discount;
 
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "recipient", nullable = false)
    private RecipientEntity recipient;
 
@@ -35,7 +35,7 @@ public class ShippingEntity {
    private Double shipmentWeight;
 
    @Column(name = "distance", nullable = false)
-   private Integer distance;
+   private Double distance;
 
    @Column(name = "extras", nullable = false)
    private Double extras;
@@ -45,4 +45,87 @@ public class ShippingEntity {
 
    @Column(name = "date", nullable = false)
    private Timestamp date;
+
+   public ShippingEntity() {
+   }
+
+   public void setId(UUID id) {
+      this.id = id;
+   }
+
+   public void setTransport(TransportEntity transport) {
+      this.transport = transport;
+   }
+
+   public void setDiscount(DiscountEntity discount) {
+      this.discount = discount;
+   }
+
+   public void setRecipient(RecipientEntity recipient) {
+      this.recipient = recipient;
+   }
+
+   public void setShipmentCapacity(Double shipmentCapacity) {
+      this.shipmentCapacity = shipmentCapacity;
+   }
+
+   public void setShipmentWeight(Double shipmentWeight) {
+      this.shipmentWeight = shipmentWeight;
+   }
+
+   public void setDistance(Double distance) {
+      this.distance = distance;
+   }
+
+   public void setExtras(Double extras) {
+      this.extras = extras;
+   }
+
+   public void setPayment(Double payment) {
+      this.payment = payment;
+   }
+
+   public void setDate(Timestamp date) {
+      this.date = date;
+   }
+
+   public UUID getId() {
+      return id;
+   }
+
+   public TransportEntity getTransport() {
+      return transport;
+   }
+
+   public DiscountEntity getDiscount() {
+      return discount;
+   }
+
+   public RecipientEntity getRecipient() {
+      return recipient;
+   }
+
+   public Double getShipmentCapacity() {
+      return shipmentCapacity;
+   }
+
+   public Double getShipmentWeight() {
+      return shipmentWeight;
+   }
+
+   public Double getDistance() {
+      return distance;
+   }
+
+   public Double getExtras() {
+      return extras;
+   }
+
+   public Double getPayment() {
+      return payment;
+   }
+
+   public Timestamp getDate() {
+      return date;
+   }
 }

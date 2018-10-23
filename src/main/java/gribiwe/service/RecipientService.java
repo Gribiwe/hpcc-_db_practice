@@ -27,8 +27,7 @@ public class RecipientService {
          recipientEntity.setAddress(address);
          recipientEntity.setName(name);
          recipientEntity.setPhone(phone);
-         recipientRepository.save(recipientEntity);
-         return recipientEntity;
+         return recipientRepository.save(recipientEntity);
       } else {
          throw new RecipientExistsException("Recipient with this name and phone is already exists", phoneExists, nameExists);
       }
