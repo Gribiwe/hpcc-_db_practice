@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,6 +24,10 @@ public class ShippingService {
    public ShippingService(ShippingRepository shippingRepository, DiscountService discountService) {
       this.shippingRepository = shippingRepository;
       this.discountService = discountService;
+   }
+
+   public List<ShippingEntity> getShippings() {
+      return shippingRepository.findAll();
    }
 
    public ShippingEntity addNew(RecipientEntity recipient, TransportEntity transport, Double capacity, Double weight, Double distance, Double extras) throws BadTransportException {

@@ -6,6 +6,7 @@ import gribiwe.repository.RecipientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -31,6 +32,10 @@ public class RecipientService {
       } else {
          throw new RecipientExistsException("Recipient with this name and phone is already exists", phoneExists, nameExists);
       }
+   }
+
+   public List<RecipientEntity> getRecipients() {
+      return recipientRepository.findAll();
    }
 
    public RecipientEntity getRecipient(UUID uuid) {
