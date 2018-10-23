@@ -14,5 +14,4 @@ public class RecipientService {
       this.recipientRepository = recipientRepository;
    }
 
-
 }
