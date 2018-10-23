@@ -44,17 +44,17 @@ public class Main implements CommandLineRunner {
       transportService.saveTransport(e2);
 
       System.out.println("=====");
-      List<TransportEntity> transportEntities = transportService.getTrasportEntities();
+      List<TransportEntity> transportEntities = transportService.getTransportEntities();
       for (TransportEntity transportEntity : transportEntities) {
          System.out.println(transportEntity.getName());
       }
       System.out.println("=====");
-      transportEntities = transportService.getTrasportEntities(50D,50D);
+      transportEntities = transportService.getTransportEntities(50D,50D);
       for (TransportEntity transportEntity : transportEntities) {
          System.out.println(transportEntity.getName());
       }
       System.out.println("=====");
-      transportEntities = transportService.getTrasportEntities(200D,200D);
+      transportEntities = transportService.getTransportEntities(200D,200D);
       for (TransportEntity transportEntity : transportEntities) {
          System.out.println(transportEntity.getName());
       }
