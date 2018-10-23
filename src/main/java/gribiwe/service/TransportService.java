@@ -18,7 +18,7 @@ public class TransportService {
       this.transportRepository = transportRepository;
    }
 
-   public List<TransportEntity> getTrasportEntities(Double capacity, Double weight) {
+   public List<TransportEntity> getTransportEntities(Double capacity, Double weight) {
       return transportRepository.findTransportEntitiesByMaxCapacityIsLessThanEqualAndMaxWeightIsLessThanEqual(capacity, weight);
    }
 
@@ -30,7 +30,7 @@ public class TransportService {
       return transportRepository.findOne(uuid);
    }
 
-   public List<TransportEntity> getTrasportEntities() {
+   public List<TransportEntity> getTransportEntities() {
       return transportRepository.findAll();
    }
 }
