@@ -15,10 +15,10 @@ public class RecipientEntity {
    @Column(name = "recipient_id", nullable = false, updatable = false)
    private UUID id;
 
-   @Column(name = "name", nullable = false)
+   @Column(name = "name", nullable = false, unique = true)
    private String name;
 
-   @Column(name = "phone", nullable = false)
+   @Column(name = "phone", nullable = false, unique = true)
    private String phone;
 
    @Column(name = "address", nullable = false)
