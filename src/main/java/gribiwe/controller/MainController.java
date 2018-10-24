@@ -1,10 +1,12 @@
 package gribiwe.controller;
 
 import gribiwe.entity.ShippingEntity;
+import gribiwe.exception.RecipientExistsException;
 import gribiwe.service.RecipientService;
 import gribiwe.service.ShippingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,6 +29,43 @@ public class MainController {
    @GetMapping("/shipping_number")
    public String shippingNumber() {
       return shippingService.getShippings().size()+"";
+   }
+
+   @PostMapping("/register")
+   public String register(String name, String address, String phone) {
+      String toReturn;
+      try {
+         recipientService.registerNew(name, address, phone);
+         toReturn = "done";
+
+      } catch (RecipientExistsException e) {
+         toReturn = "";
+         if (e.isNameExists()) {
+            toReturn+="1";
+         } else {
+            toReturn+="0";
+         }
+         if (e.isPhoneExists()) {
+            toReturn+="1";
+         } else {
+            toReturn+="0";
+         }
+      }
+      System.out.println("toretr: "+toReturn);
+      return toReturn;
+   }
+
+   @PostMapping("/login")
+   public String login(String name, String phone) {
+      String toReturn;
+
+      if (recipientService.isExistsName(name) && recipientService.isExistsPhone(phone)) {
+         toReturn = "done";
+      } else {
+         toReturn = "err";
+      }
+
+      return toReturn;
    }
 
    @GetMapping("/kilometers_number")

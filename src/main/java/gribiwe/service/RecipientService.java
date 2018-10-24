@@ -20,7 +20,7 @@ public class RecipientService {
    }
 
    public RecipientEntity registerNew(String name, String address, String phone) throws RecipientExistsException {
-      boolean phoneExists = isExistsPhone(address);
+      boolean phoneExists = isExistsPhone(phone);
       boolean nameExists = isExistsName(name);
       if (!(phoneExists || nameExists)) {
          RecipientEntity recipientEntity = new RecipientEntity();
@@ -30,6 +30,7 @@ public class RecipientService {
          recipientEntity.setPhone(phone);
          return recipientRepository.save(recipientEntity);
       } else {
+         System.out.println("exists");
          throw new RecipientExistsException("Recipient with this name and phone is already exists", phoneExists, nameExists);
       }
    }
