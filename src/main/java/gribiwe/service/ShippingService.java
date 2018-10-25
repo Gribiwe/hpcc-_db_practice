@@ -46,14 +46,10 @@ public class ShippingService {
       shippingEntity.setShipmentCapacity(capacity);
       shippingEntity.setShipmentWeight(weight);
       DiscountEntity discountEntity = discountService.getDiscount(distance);
-
       shippingEntity.setDiscount(discountEntity);
-      Double discount = discountEntity == null ? 0 : discountEntity.getAmount();
 
-      System.out.println("payment = "+ distance+" * "+weight+" * "+transport.getPrice()+" + "+extras);
+      Double discount = discountEntity == null ? 0 : discountEntity.getAmount();
       Double payment = distance * weight * transport.getPrice() + extras;
-      System.out.println("payment = "+payment +" - "+payment+" * "+(discount / 100));
-      System.out.println("payment = "+payment +" - "+(payment * discount / 100));
       payment = payment - payment * discount/ 100;
 
       shippingEntity.setPayment(payment);

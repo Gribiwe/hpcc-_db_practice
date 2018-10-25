@@ -334,11 +334,6 @@
         var addressField = document.getElementById("email-form1-9");
         var phoneField = document.getElementById("phone-form1-9");
 
-        if (nameField.value.includes(" ")) {
-            alert("Ім'я не має мати знаку ' '");
-            return;
-        }
-
         $.post("/register", {name: nameField.value, address: addressField.value, phone: phoneField.value})
             .done(function (data) {
                 if (data === "done") {

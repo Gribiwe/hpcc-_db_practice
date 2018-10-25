@@ -7,5 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface TransportRepository extends JpaRepository<TransportEntity, UUID> {
-   List<TransportEntity> findTransportEntitiesByMaxCapacityIsLessThanEqualAndMaxWeightIsLessThanEqual(Double maxCapacity, Double maxWeight);
+   List<TransportEntity> findTransportEntitiesByMaxCapacityIsGreaterThanEqualAndMaxWeightIsGreaterThanEqual(Double maxCapacity, Double maxWeight);
+
+   TransportEntity
 }

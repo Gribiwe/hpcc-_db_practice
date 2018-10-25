@@ -19,7 +19,7 @@ public class TransportService {
    }
 
    public List<TransportEntity> getTransportEntities(Double capacity, Double weight) {
-      return transportRepository.findTransportEntitiesByMaxCapacityIsLessThanEqualAndMaxWeightIsLessThanEqual(capacity, weight);
+      return transportRepository.findTransportEntitiesByMaxCapacityIsGreaterThanEqualAndMaxWeightIsGreaterThanEqual(capacity, weight);
    }
 
    public TransportEntity saveTransport(String name, Double price, Double maxCapacity, Double maxWeight) {

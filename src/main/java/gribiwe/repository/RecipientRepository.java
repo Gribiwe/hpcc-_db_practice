@@ -10,4 +10,6 @@ public interface RecipientRepository extends JpaRepository<RecipientEntity, UUID
    boolean existsRecipientEntitiesByPhone(String phone);
 
    boolean existsRecipientEntitiesByName(String name);
+
+   RecipientEntity findFirstByName(String name);
 }

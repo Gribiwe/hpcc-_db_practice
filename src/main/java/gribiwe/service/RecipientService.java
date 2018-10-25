@@ -43,6 +43,10 @@ public class RecipientService {
       return recipientRepository.findOne(uuid);
    }
 
+   public RecipientEntity getRecipient(String name) {
+      return recipientRepository.findFirstByName(name);
+   }
+
    public boolean isExistsPhone(String address) {
       return recipientRepository.existsRecipientEntitiesByPhone(address);
    }
